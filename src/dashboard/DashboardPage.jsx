@@ -87,7 +87,7 @@ export const DashboardPage = () => {
                 {
                     weatherData.length ? <CurrentWeather currentWeather={weatherData[0]} /> : ""
                 }
-
+                
                 <div className="content weatherForecast__container">
                     <h3>Pronostico de {weatherData.length} días</h3>
                     {

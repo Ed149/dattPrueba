@@ -34,7 +34,7 @@ export const RegisterPage = () => {
       return;
     }
     localStorage.setItem(`${user.email}`, JSON.stringify(user));
-    
+
   }
 
   return (
@@ -66,7 +66,7 @@ export const RegisterPage = () => {
             <button className='btn btn__active'>Registrarse</button>
           </div>
 
-          <p className='center'>¿Ya tienes una cuenta? <Link to="/auth/">Inicia Sesion</Link></p>
+          <p className='center'>¿Ya tienes una cuenta? <Link to="/dattPrueba/auth/">Inicia Sesion</Link></p>
         </form>
       </div>
 
