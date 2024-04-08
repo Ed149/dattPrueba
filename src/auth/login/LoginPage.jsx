@@ -49,7 +49,7 @@ export const LoginPage = () => {
 
     console.log("Siguiente proceso");
 
-    navigate("/dashboard");
+    navigate("/dattPrueba/dashboard");
   }
 
   return (
@@ -59,7 +59,7 @@ export const LoginPage = () => {
           <WeatherLogo/>
 
           <div className="form__group mt-2 mb-2">
-            <input id="email" type="text" placeholder='Ingresa tu email' onChange={onInputChange} className='mb-2' />
+            <input id="email" type="email" placeholder='Ingresa tu email' onChange={onInputChange} className='mb-2' />
             <input id="password" type="password" placeholder='Ingresa tu contraseña' onChange={onInputChange} className='mb-1' />
             {
               isError ?
@@ -69,12 +69,12 @@ export const LoginPage = () => {
           </div>
 
           <div className="form__submit mb-2">
-            <button className='btn'>Login</button>
+            <button className='btn btn__active'>Login</button>
           </div>
 
 
 
-          <p className='center'>¿No tienes cuenta? <Link to="/auth/register">Registrate</Link></p>
+          <p className='center'>¿No tienes cuenta? <Link to="/dattPrueba/auth/register">Registrate</Link></p>
         </form>
 
       </div>

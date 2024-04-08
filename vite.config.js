@@ -10,6 +10,6 @@ export default defineConfig(({mode})=>{
       'process.env':env
     },
     plugins:[react()],
-    base:"https://github.com/Ed149/dattPrueba"
+    base:"/dattPrueba/"
   }
 });

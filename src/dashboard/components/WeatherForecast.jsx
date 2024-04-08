@@ -7,7 +7,7 @@ export const WeatherForecast = ({ weatherForecast }) => {
 
 
     return (
-        <div className="weatherForecast">
+        <div className="weatherForecast mt-1">
 
 
             <div className="weatherForecast__info">

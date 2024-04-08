@@ -7,12 +7,12 @@ export const WeatherRouter = () => {
   return (
     <Routes>
 
-        <Route path='/auth/*' element={<LoginPage />} />
-        <Route path='/auth/register' element={<RegisterPage />} />
+        <Route path='/dattPrueba/auth' element={<LoginPage />} />
+        <Route path='/dattPrueba/auth/register' element={<RegisterPage />} />
         
-        <Route path='/dashboard' element={<DashboardPage/>}/>
+        <Route path='/dattPrueba/dashboard' element={<DashboardPage/>}/>
 
-        <Route path='/*' element={<Navigate to='/auth/'/>}/>
+        <Route path='/*' element={<Navigate to='/dattPrueba/auth/'/>}/>
     </Routes>
   )
 }

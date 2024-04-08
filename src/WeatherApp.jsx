@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { WeatherRouter } from './routes/WeatherRouter'
 import { BrowserRouter } from 'react-router-dom'
 

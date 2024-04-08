@@ -12,6 +12,7 @@ export const DashboardPage = () => {
     const [weatherData, setWeatherData] = useState([]);
 
     const [search, setSearch] = useState(false);
+    const [isOpen, setIsOpen] = useState(false)
 
     const getWeatherData = async () => {
         let _urlBase = `${process.env.REACT_APP_API_URL}`;
@@ -39,7 +40,7 @@ export const DashboardPage = () => {
                     uv: el.day.uv,
                     precip: el.day.totalprecip_mm,
                     maxWindKph: Math.floor(el.day.maxwind_kph),
-                    humidity:el.day.avghumidity
+                    humidity: el.day.avghumidity
                 },
                 location
             })
@@ -67,36 +68,44 @@ export const DashboardPage = () => {
         setSearch(!search);
     }
 
+    const handleIsOpen = () => {
+        setIsOpen(!isOpen)
+    }
+
     return (
-        <div className='dashboard '>
-            <Navbar search={search} handleSearch={handleSearch} />
-            {
-                search ?
-                    <Search handleInputChange={handleInputChange} handleOnSubmit={handleOnSubmit} /> :
-                    ""
-            }
+        <div className='dashboard'>
+            <div className="dashboard__container">
 
-            {
-                weatherData.length && <CurrentWeather currentWeather={weatherData[0]} />
-            }
-
-            <div className="content weatherForecast__container">
-                <h3>Pronostico de {weatherData.length} días</h3>
+                <Navbar search={search} isOpen={isOpen} handleSearch={handleSearch} handleIsOpen={handleIsOpen}
+                />
                 {
-                    weatherData.length && weatherData.map((el,i) => (
-                        <WeatherForecast key={i} weatherForecast={el}/>
-                    ))
+                    search ?
+                        <Search handleInputChange={handleInputChange} handleOnSubmit={handleOnSubmit} /> :
+                        ""
                 }
 
+                {
+                    weatherData.length ? <CurrentWeather currentWeather={weatherData[0]} /> : ""
+                }
+
+                <div className="content weatherForecast__container">
+                    <h3>Pronostico de {weatherData.length} días</h3>
+                    {
+                        weatherData.length && weatherData.map((el, i) => (
+                            <WeatherForecast key={i} weatherForecast={el} />
+                        ))
+                    }
+
+                </div>
+
+
+
+
+                {/* <img src={weatherData?.icon} alt="Icon" styles="width:300px;height:100px; background-color:red;" /> */}
+                {/* https://cdn.weatherapi.com/weather/64x64/night/248.png */}
+
+                {/* <Footer /> */}
             </div>
-
-
-
-
-            {/* <img src={weatherData?.icon} alt="Icon" styles="width:300px;height:100px; background-color:red;" /> */}
-            {/* https://cdn.weatherapi.com/weather/64x64/night/248.png */}
-
-            {/* <Footer /> */}
         </div>
     )
 }

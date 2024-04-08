@@ -9,7 +9,7 @@ export const CurrentWeatherInfo = ({ currentWeather }) => {
             <div className="pronostico__info">
                 <BsThermometer />
                 <div className="pronostico__info_text">
-                    <p>Sensación térmica</p>
+                    <p>Sensación</p>
                     <p className="fw-700">{currentWeather?.current.feelslike_c} °C</p>
                 </div>
             </div>
