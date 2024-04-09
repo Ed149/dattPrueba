@@ -40,6 +40,21 @@ body {
 .flex-dir-col{
   flex-direction: column;
 }
+.weatherLogo{
+  justify-content: center;
+
+  position: relative;
+}
+.weatherLogo img{
+  position: absolute;
+  width:30px;
+  top:-55px;
+  right: 0;
+  bottom: 0;
+  left: 20px;
+  margin: auto;
+
+}
 
 .container {
   height: 100vh;
@@ -75,7 +90,7 @@ body {
 }
 
 .navbar{
-  padding:.8rem;
+  padding:2rem .8rem;
 }
 
 .navigation{

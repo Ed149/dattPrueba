@@ -66,7 +66,7 @@ export const RegisterPage = () => {
           
           </div>
 
-          <div className="form__submit mb-2">
+          <div className="d-flex jc-center mt-1 mb-2">
             <button className='btn btn__active'>Registrarse</button>
           </div>
 
