@@ -1,12 +1,12 @@
 import { WeatherRouter } from './routes/WeatherRouter'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, HashRouter } from 'react-router-dom'
 
 function WeatherApp() {
   return (
     <>
-     <BrowserRouter>
+     <HashRouter>
         <WeatherRouter />
-      </BrowserRouter>
+      </HashRouter>
     </>
   )
 }

@@ -6,34 +6,42 @@ import { AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 
 export const Navbar = ({ search, isOpen, handleSearch, handleIsOpen }) => {
+    let user = JSON.parse(localStorage.getItem('actualUser'));
+
+    console.log("User email", user.email)
+
     console.log("Navbar", search);
-    console.log("Is open", isOpen)
+    console.log("Is open", isOpen);
+    const handleLogOut = () => {
+        localStorage.removeItem('actualUser');
+    }
     return (
         <header>
-            <div className="navbar">
-                {isOpen ? (<AiOutlineClose onClick={handleIsOpen} />) : (<AiOutlineMenu onClick={handleIsOpen} />)}
+            <div className="navbar d-flex jc-space-btw ai-center">
+                {isOpen ? (<AiOutlineClose onClick={handleIsOpen} className='icon'/>) : (<AiOutlineMenu onClick={handleIsOpen} className='icon'/>)}
                 <WeatherLogo />
-                {search ? <AiOutlineClose onClick={handleSearch} /> : <BiSearch onClick={handleSearch} />}
-                {/* <nav className='navbar'>
-            </nav> */}
-
+                {search ? <AiOutlineClose onClick={handleSearch} /> : <BiSearch onClick={handleSearch} className='icon'/>}
             </div>
-
             <nav>
+
 
                 <ul className={`navigation ${isOpen ? "open" : ""}`}>
 
                     <div className="close " onClick={handleIsOpen}>
                         <AiOutlineClose />
                     </div>
+
+                    <div className="profile center d-flex ai-center flex-dir-col">
+                        <div className='profile__picture'></div>
+                        <p>{`${user.nombre} ${user.apellido}`}</p>
+                        <p>{`${user.email}`}</p>
+
+                    </div>
                     <li>
-                        <Link>Inicio</Link>
+                        <Link to='/dashboard'>Inicio</Link>
                     </li>
                     <li>
-                        <Link>Segundo</Link>
-                    </li>
-                    <li>
-                        <Link>Cerrar Sesión</Link>
+                        <Link to='/auth/' onClick={handleLogOut}>Cerrar Sesión</Link>
                     </li>
                 </ul>
             </nav>

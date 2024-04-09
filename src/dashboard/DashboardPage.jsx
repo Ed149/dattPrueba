@@ -3,31 +3,40 @@ import { Navbar } from './components/Navbar'
 import { Search } from './components/Search'
 import { CurrentWeather } from './components/CurrentWeather';
 import { Footer } from '../components/Footer';
-import { WeatherForecast } from './components/WeatherForecast';
+import { WeatherForecastContainer } from './components/WeatherForecastContainer';
+import { Loader } from './components/Loader';
+import {useNavigate,redirect} from 'react-router-dom'
 
 export const DashboardPage = () => {
+    let user = localStorage.getItem('actualUser');
+    const navigate = useNavigate();
+    console.log("Useeer",user)
+
+    if(!user){
+        console.log("No existe el usuario")
+        return redirect("/auth/");   
+    }
 
     const [currentLocation, setcurrentLocation] = useState('Poza Rica');
 
     const [weatherData, setWeatherData] = useState([]);
 
     const [search, setSearch] = useState(false);
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
+    const [isLoading,setIsLoading] = useState(false);
 
     const getWeatherData = async () => {
+        setIsLoading(true);
         let _urlBase = `${process.env.REACT_APP_API_URL}`;
         let currentEP = `${_urlBase}${process.env.REACT_APP_API_FORECAST}?key=${process.env.REACT_APP_API_KEY}&q=${currentLocation}&lang=es&days=6`
         let response = await fetch(currentEP);
         let { current, forecast, location } = await response.json();
 
-        console.log("Data forecast", forecast);
-        console.log("Data current", current);
-
-
         let objData = [];
 
         forecast.forecastday.map((el) => {
             objData.push({
+                date:el.date,
                 astro: {
                     sunrise: el.astro.sunrise,
                     sunset: el.astro.sunset
@@ -47,6 +56,7 @@ export const DashboardPage = () => {
         })
         objData[0].current = current;
         objData[0].current.condition.icon = `https:${current.condition.icon}`;
+        setIsLoading(false);
         setWeatherData(objData);
     }
 
@@ -84,27 +94,15 @@ export const DashboardPage = () => {
                         ""
                 }
 
-                {
-                    weatherData.length ? <CurrentWeather currentWeather={weatherData[0]} /> : ""
-                }
                 
-                <div className="content weatherForecast__container">
-                    <h3>Pronostico de {weatherData.length} días</h3>
-                    {
-                        weatherData.length && weatherData.map((el, i) => (
-                            <WeatherForecast key={i} weatherForecast={el} />
-                        ))
-                    }
-
-                </div>
-
-
-
-
-                {/* <img src={weatherData?.icon} alt="Icon" styles="width:300px;height:100px; background-color:red;" /> */}
-                {/* https://cdn.weatherapi.com/weather/64x64/night/248.png */}
-
-                {/* <Footer /> */}
+                {
+                    isLoading ? (<Loader/>) : ( weatherData.length && <CurrentWeather currentWeather={weatherData[0]} />)
+                }
+                {
+                    isLoading ? "" : (weatherData.length && <WeatherForecastContainer weatherData={weatherData}/>)
+                }
+            
+                <Footer />
             </div>
         </div>
     )

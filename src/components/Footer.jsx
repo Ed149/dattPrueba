@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export const Footer = () => {
   return (
     <footer>
-        <p>Desarrollador por <Link to="https://github.com/Ed149" target='_blank'>Edgar Efren Zamora Cortes</Link> </p>
+        <p>Desarrollado por <Link to="https://github.com/Ed149" target='_blank'>Edgar Efren Zamora Cortes</Link> </p>
     </footer>
   )
 }

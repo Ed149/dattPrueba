@@ -4,15 +4,15 @@ import { LoginPage } from '../auth/login/LoginPage';
 import { RegisterPage } from '../auth/register/RegisterPage';
 import { DashboardPage } from '../dashboard/DashboardPage';
 export const WeatherRouter = () => {
+  let actualUser = localStorage.getItem('actualUser');
+  console.log("ActualUser",typeof(actualUser))
   return (
     <Routes>
-
-        <Route path='/dattPrueba/auth/' element={<LoginPage />} />
-        <Route path='/dattPrueba/auth/register' element={<RegisterPage />} />
+        <Route path='/*' element={<Navigate to='/auth/*'/>}/>:
+        <Route path='/dashboard' element={<DashboardPage/>}/> 
+        <Route path='/auth/*' element={<LoginPage />} />
+        <Route path='/auth/register' element={<RegisterPage />} />
         
-        <Route path='/dattPrueba/dashboard' element={<DashboardPage/>}/>
-
-        <Route path='/dattPrueba/' element={<Navigate to='/dattPrueba/auth/'/>}/>
     </Routes>
   )
 }

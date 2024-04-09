@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Footer } from '../../components/Footer';
 import { WeatherLogo } from '../../components/WeatherLogo';
+import { useDispatch, useSelector } from "react-redux";
+
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -26,7 +28,6 @@ export const LoginPage = () => {
     setIsError(false);
 
     if(user.email === ''){
-      console.log("Email en if",user.email)
       setIsError(true);
       setMessageError("El email es obligatorio");
       return;
@@ -47,9 +48,12 @@ export const LoginPage = () => {
       return;
     }
 
-    console.log("Siguiente proceso");
+    // dispatch(setSession({
+    //   user:itemUser
+    // }))
 
-    navigate("/dattPrueba/dashboard");
+    localStorage.setItem(`actualUser`, JSON.stringify(itemUser));
+    navigate("/dashboard");
   }
 
   return (
@@ -68,13 +72,13 @@ export const LoginPage = () => {
             }
           </div>
 
-          <div className="form__submit mb-2">
+          <div className="d-flex jc-center mb-2">
             <button className='btn btn__active'>Login</button>
           </div>
 
 
 
-          <p className='center'>¿No tienes cuenta? <Link to="/dattPrueba/auth/register">Registrate</Link></p>
+          <p className='center'>¿No tienes cuenta? <Link to="/auth/register">Registrate</Link></p>
         </form>
 
       </div>

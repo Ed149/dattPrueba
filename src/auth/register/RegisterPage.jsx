@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { Footer } from '../../components/Footer';
 import { WeatherLogo } from '../../components/WeatherLogo';
 
 export const RegisterPage = () => {
+
+  const navigate = useNavigate();
   const [isError, setIsError] = useState(false);
   const [messageError,setMessageError] = useState('');
 
@@ -35,6 +37,8 @@ export const RegisterPage = () => {
     }
     localStorage.setItem(`${user.email}`, JSON.stringify(user));
 
+    alert("El usuario ha creado exitosamente");
+    navigate('/auth/');
   }
 
   return (
@@ -66,7 +70,7 @@ export const RegisterPage = () => {
             <button className='btn btn__active'>Registrarse</button>
           </div>
 
-          <p className='center'>¿Ya tienes una cuenta? <Link to="/dattPrueba/auth/">Inicia Sesion</Link></p>
+          <p className='center'>¿Ya tienes una cuenta? <Link to="/auth/">Inicia Sesion</Link></p>
         </form>
       </div>
 

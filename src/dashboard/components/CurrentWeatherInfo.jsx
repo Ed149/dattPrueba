@@ -5,7 +5,7 @@ import { AiFillCloud } from "react-icons/ai";
 export const CurrentWeatherInfo = ({ currentWeather }) => {
     return (
 
-        <div className="pronostico mt-2">
+        <div className="pronostico d-flex jc-space-btw ai-center mt-2">
             <div className="pronostico__info">
                 <BsThermometer />
                 <div className="pronostico__info_text">
