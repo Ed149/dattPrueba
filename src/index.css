@@ -161,7 +161,9 @@ body {
 .location{
   gap:1rem;
 }
-
+.pressure{
+  width:24px;
+}
 .weather__temperature_info{
   font-size: 2rem;
   letter-spacing: 1.5px;
@@ -176,7 +178,7 @@ body {
   margin-bottom: 1rem;
 }
 .weather__temperature_general p{  
-  margin-bottom: .3rem;
+  margin: 1.5rem 0;
 }
 .weather__total{
   display: flex;
@@ -251,6 +253,9 @@ footer{
 }
 .mt-2{
   margin-top: 2rem;
+}
+.mt-3{
+  margin-top: 3rem;
 }
 .mb-1{
   margin-bottom: 1rem;

@@ -1,7 +1,7 @@
 import { BsWind, BsFillSunFill, BsThermometer } from "react-icons/bs";
 import { MdWaterDrop } from "react-icons/md";
 import { AiFillCloud } from "react-icons/ai";
-
+import pressure from '../../assets/manometro.png'
 export const CurrentWeatherInfo = ({ currentWeather }) => {
     return (
 
@@ -47,7 +47,7 @@ export const CurrentWeatherInfo = ({ currentWeather }) => {
             </div>
 
             <div className="pronostico__info">
-                <AiFillCloud />
+                <img src={pressure} alt="" className="pressure" />
                 <div className="pronostico__info_text">
                     <p>Presion</p>
                     <p className="fw-700">{currentWeather?.current.pressure_mb}mbar</p>

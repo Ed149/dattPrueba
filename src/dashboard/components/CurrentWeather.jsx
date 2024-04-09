@@ -28,7 +28,7 @@ export const CurrentWeather = ({ currentWeather }) => {
 
             <div className="d-flex jc-center ai-center mt-1">
                 <div className="weather__temperature mt-1">
-                    <div className="weather__temperature_info d-flex ai-center jc-center">
+                    <div className="weather__temperature_info d-flex ai-center jc-center mb-1">
                         <img src={currentWeather?.current.condition.icon} alt="" />
                         <h3>{Math.floor(currentWeather?.current.temp_c)}°<span>C</span></h3>
                     </div>
@@ -54,7 +54,7 @@ export const CurrentWeather = ({ currentWeather }) => {
 
 
             </div>
-            <div className="pronostico__container">
+            <div className="pronostico__container mt-3">
                 <CurrentWeatherInfo currentWeather={currentWeather} />
             </div>
 

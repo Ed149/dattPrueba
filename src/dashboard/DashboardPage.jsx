@@ -5,12 +5,10 @@ import { CurrentWeather } from './components/CurrentWeather';
 import { Footer } from '../components/Footer';
 import { WeatherForecastContainer } from './components/WeatherForecastContainer';
 import { Loader } from './components/Loader';
-import {useNavigate,redirect} from 'react-router-dom'
+import {redirect} from 'react-router-dom'
 
 export const DashboardPage = () => {
     let user = localStorage.getItem('actualUser');
-    const navigate = useNavigate();
-    console.log("Useeer",user)
 
     if(!user){
         console.log("No existe el usuario")
